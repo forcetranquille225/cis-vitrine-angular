@@ -5,22 +5,30 @@ export class AuthService {
   private tokenKey = 'auth_token';
   private userRoleKey = 'user_role';
 
+  private isBrowser(): boolean {
+    return typeof window !== 'undefined' && typeof window.localStorage !== 'undefined';
+  }
+
   login(token: string, role: string) {
-    localStorage.setItem(this.tokenKey, token);
-    localStorage.setItem(this.userRoleKey, role);
+    if (this.isBrowser()) {
+      localStorage.setItem(this.tokenKey, token);
+      localStorage.setItem(this.userRoleKey, role);
+    }
   }
 
   logout() {
-    localStorage.removeItem(this.tokenKey);
-    localStorage.removeItem(this.userRoleKey);
+    if (this.isBrowser()) {
+      localStorage.removeItem(this.tokenKey);
+      localStorage.removeItem(this.userRoleKey);
+    }
   }
 
   isAuthenticated(): boolean {
-    return !!localStorage.getItem(this.tokenKey);
+    return this.isBrowser() ? !!localStorage.getItem(this.tokenKey) : false;
   }
 
   getRole(): string | null {
-    return localStorage.getItem(this.userRoleKey);
+    return this.isBrowser() ? localStorage.getItem(this.userRoleKey) : null;
   }
 
   hasRole(role: string): boolean {

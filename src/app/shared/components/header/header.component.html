@@ -1,1 +1,50 @@
-<p>header works!</p>
+<header class="header">
+  <div class="header-container">
+    <!-- Logo et nom du site -->
+    <div class="logo">
+      <a routerLink="/">CIS Vitrine</a>
+    </div>
+
+    <!-- Bouton menu mobile -->
+    <button class="mobile-menu-button" (click)="toggleMenu()" aria-label="Menu">
+      <span [class.active]="isMenuOpen"></span>
+    </button>
+
+    <!-- Navigation principale -->
+    <nav class="main-nav" [class.active]="isMenuOpen">
+      <!-- Menu visiteur -->
+      <ul class="nav-list">
+        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Accueil</a></li>
+        <li><a routerLink="/services" routerLinkActive="active">Services</a></li>
+        <li><a routerLink="/about" routerLinkActive="active">À propos</a></li>
+        <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
+      </ul>
+
+      <!-- Menu Administrateur -->
+      <ul class="nav-list admin-nav" *ngIf="authService.hasRole('admin')">
+        <li><a routerLink="/admin/dashboard" routerLinkActive="active">Tableau de bord</a></li>
+        <li><a routerLink="/admin/content-management" routerLinkActive="active">Gestion du contenu</a></li>
+        <li><a routerLink="/admin/messages" routerLinkActive="active">Messages</a></li>
+      </ul>
+
+      <!-- Menu Super Admin -->
+      <ul class="nav-list super-admin-nav" *ngIf="authService.hasRole('super-admin')">
+        <li><a routerLink="/super-admin/settings" routerLinkActive="active">Paramètres</a></li>
+        <li><a routerLink="/super-admin/users-management" routerLinkActive="active">Gestion des utilisateurs</a></li>
+      </ul>
+
+      <!-- Auth buttons -->
+      <div class="auth-buttons">
+        <ng-container *ngIf="!authService.isAuthenticated(); else loggedIn">
+          <a routerLink="/auth/login" class="btn btn-login">Se connecter</a>
+        </ng-container>
+        <ng-template #loggedIn>
+          <div class="user-menu">
+            <span class="username">{{ authService.getRole() }}</span>
+            <button class="btn btn-logout" (click)="logout()">Se déconnecter</button>
+          </div>
+        </ng-template>
+      </div>
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,10 @@
+/* App component layout tweaks for header offset */
+.app-main {
+	padding-top: 72px; /* ajuster selon la hauteur réelle du header */
+	min-height: calc(100vh - 72px);
+}
+
+/* Ensure body/content don't hide behind fixed header */
+:host-context(body) {
+	margin: 0;
+}
