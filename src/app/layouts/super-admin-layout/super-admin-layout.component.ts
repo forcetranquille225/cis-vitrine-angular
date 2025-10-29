@@ -1,9 +1,14 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
+import { HeaderComponent } from '../../shared/components/header/header.component';
+import { FooterComponent } from '../../shared/components/footer/footer.component';
+
 
 @Component({
   selector: 'app-super-admin-layout',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, RouterOutlet, HeaderComponent, FooterComponent],
   templateUrl: './super-admin-layout.component.html',
   styleUrl: './super-admin-layout.component.scss'
 })
