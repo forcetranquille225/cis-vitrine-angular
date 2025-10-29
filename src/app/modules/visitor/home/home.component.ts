@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,13 +9,13 @@ import { RouterLink } from '@angular/router';
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  // Navigation vers les services
+  constructor(private router: Router) {}
+
   navigateToServices() {
-    // TODO: Implémenter la navigation vers la section services
+    this.router.navigate(['/services']);
   }
 
-  // Navigation vers la page de contact
   navigateToContact() {
-    // TODO: Implémenter la navigation vers la page de contact
+    this.router.navigate(['/contact']);
   }
 }

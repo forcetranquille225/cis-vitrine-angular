@@ -16,8 +16,7 @@ main {
 
 // Hero Section
 .hero {
-  background: linear-gradient(rgba($primary-color, 0.8), rgba($primary-color, 0.8)),
-    url('/assets/images/hero-bg.jpg') center/cover no-repeat;
+  background: linear-gradient(rgba($primary-color, 0.8), rgba($primary-color, 0.9));
   min-height: 80vh;
   display: flex;
   align-items: center;
@@ -140,8 +139,7 @@ main {
 
 // CTA Section
 .cta-section {
-  background: linear-gradient(rgba($secondary-color, 0.9), rgba($secondary-color, 0.9)),
-    url('/assets/images/cta-bg.jpg') center/cover no-repeat;
+  background: linear-gradient(rgba($secondary-color, 0.9), rgba($secondary-color, 0.8));
   padding: 5rem 2rem;
   text-align: center;
   color: $white;
