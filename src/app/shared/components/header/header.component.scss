@@ -16,18 +16,18 @@
     align-items: center;
   }
 
-  .logo {
-    a {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #333;
-      text-decoration: none;
-      
-      &:hover {
+    
+      .logo {
+            width: 60px;
+            height: auto;
+            border-radius: 1px;
+            &:hover {
         color: #007bff;
       }
-    }
-  }
+        }
+      
+    
+  
 
   .mobile-menu-button {
     display: none;

@@ -37,9 +37,11 @@ $container-max: 1100px;
           align-items: center;
           color: $text;
         }
-        .logo { color: $accent; }
-        .brand-text { .company { font-weight: 700; display:block; } .tagline { display:block; font-size: 0.85rem; color: $muted; } }
-        .desc { margin-top: 12px; color: $muted; font-size: 0.95rem; line-height:1.4; }
+        .logo {
+            width: 60px;
+            height: auto;
+            border-radius: 2px;
+        }
       }
 
       h4 { margin: 0 0 10px 0; font-size: 1rem; font-weight: 600; color: $text; }
