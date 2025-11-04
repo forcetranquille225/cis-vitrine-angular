@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [],
   templateUrl: './contact.component.html',
-  styleUrl: './contact.component.scss'
+  // styleUrls: ['./contact.component.css'],
+  imports: [FormsModule] // ✅ Important !
 })
 export class ContactComponent {
-
+  onSubmit() {
+    console.log('Formulaire soumis ✅');
+  }
 }
