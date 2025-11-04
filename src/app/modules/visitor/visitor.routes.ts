@@ -24,6 +24,16 @@ export const VISITOR_ROUTES: Routes = [
         loadComponent: () =>
           import('./contact/contact.component').then(m => m.ContactComponent),
       },
+      {
+        path: 'legal',
+        loadComponent: () =>
+          import('./legal/legal.component').then(m => m.LegalComponent),
+      },
+      {
+        path: 'privacy',
+        loadComponent: () =>
+          import('./privacy/privacy.component').then(m => m.PrivacyComponent),
+      },
     ],
   },
 ];
