@@ -13,6 +13,8 @@ import { UserService } from '../../../core/services/user.service';
 })
 export class HeaderComponent {
   isMenuOpen = false;
+  openDropdown = false;
+
 
   constructor(
     public authService: AuthService,

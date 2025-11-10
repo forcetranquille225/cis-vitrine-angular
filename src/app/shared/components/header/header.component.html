@@ -18,11 +18,32 @@
     <nav class="main-nav" [class.active]="isMenuOpen">
       <!-- Menu visiteur -->
       <ul class="nav-list">
-        <li><a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Accueil</a></li>
-        <li><a routerLink="/services" routerLinkActive="active">Services</a></li>
-        <li><a routerLink="/about" routerLinkActive="active">À propos</a></li>
-        <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
-      </ul>
+  <li>
+    <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      Accueil
+    </a>
+  </li>
+
+  <!-- Dropdown Services -->
+  <li class="dropdown" (mouseenter)="openDropdown = true" (mouseleave)="openDropdown = false">
+    <a routerLink="/services" routerLinkActive="active">
+      Services
+      <span class="arrow" [class.open]="openDropdown">▼</span>
+    </a>
+
+    <ul class="dropdown-menu" *ngIf="openDropdown">
+      <li><a routerLink="/services/conseil" routerLinkActive="active">Conseil & accompagnement</a></li>
+      <li><a routerLink="/services/import" routerLinkActive="active">Import / Export</a></li>
+      <li><a routerLink="/services/logistique" routerLinkActive="active">Logistique</a></li>
+      <li><a routerLink="/services/formation" routerLinkActive="active">Formation</a></li>
+      <li><a routerLink="/services/audit" routerLinkActive="active">Audit & conformité</a></li>
+    </ul>
+  </li>
+
+  <li><a routerLink="/about" routerLinkActive="active">À propos</a></li>
+  <li><a routerLink="/contact" routerLinkActive="active">Contact</a></li>
+</ul>
+
 
       <!-- Menu Administrateur -->
       <ul class="nav-list admin-nav" *ngIf="authService.hasRole('admin')">
