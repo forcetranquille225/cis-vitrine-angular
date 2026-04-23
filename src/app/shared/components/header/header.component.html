@@ -32,11 +32,11 @@
     </a>
 
     <ul class="dropdown-menu" *ngIf="openDropdown">
-      <li><a routerLink="/services/conseil" routerLinkActive="active">Conseil & accompagnement</a></li>
-      <li><a routerLink="/services/import" routerLinkActive="active">Import / Export</a></li>
-      <li><a routerLink="/services/logistique" routerLinkActive="active">Logistique</a></li>
-      <li><a routerLink="/services/formation" routerLinkActive="active">Formation</a></li>
-      <li><a routerLink="/services/audit" routerLinkActive="active">Audit & conformité</a></li>
+      <li><a routerLink="/services" routerLinkActive="active">Tous les Services</a></li>
+      <li><a routerLink="/services" fragment="import-export" routerLinkActive="active">Import-Export</a></li>
+      <li><a routerLink="/services" fragment="transit" routerLinkActive="active">Transit</a></li>
+      <li><a routerLink="/services" fragment="representation-commerciale" routerLinkActive="active">Représentation Commerciale</a></li>
+      <li><a routerLink="/services" fragment="commerce-international" routerLinkActive="active">Commerce International</a></li>
     </ul>
   </li>
 
