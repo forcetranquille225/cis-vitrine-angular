@@ -1,42 +1,202 @@
-<section class="py-20 px-4 bg-white">
-  <div class="max-w-5xl mx-auto">
-    <!-- Titre -->
-    <h1 class="text-4xl font-bold text-center text-gray-800 mb-12">
-      À propos de notre entreprise
-    </h1>
-
-    <!-- Historique -->
-    <div class="mb-12">
-      <h2 class="text-2xl font-semibold text-blue-700 mb-4">Notre Histoire</h2>
-      <p class="text-gray-700 leading-relaxed">
-        Fondée par des experts du commerce international, notre entreprise s’est construite autour d’une vision claire : faciliter les échanges commerciaux entre l’Afrique et le reste du monde.
-        Grâce à des années d’expérience cumulées, nous avons établi des partenariats solides à l’échelle régionale et internationale.
-      </p>
+<main>
+  <!-- Hero Section -->
+  <section class="hero-about">
+    <div class="hero-content">
+      <h1>À Propos de CIS International</h1>
+      <p>Votre partenaire de confiance en commerce international depuis 18 ans</p>
     </div>
+  </section>
 
-    <!-- Vision -->
-    <div class="mb-12">
-      <h2 class="text-2xl font-semibold text-blue-700 mb-4">Notre Vision</h2>
-      <p class="text-gray-700 leading-relaxed">
-        Être un acteur de référence en matière d’import-export, de transit et de représentation commerciale, tout en contribuant activement au développement économique du continent africain. 
-        Nous plaçons la confiance, la transparence et l’efficacité au cœur de chaque mission.
-      </p>
-    </div>
-
-    <!-- Équipe -->
-    <div>
-      <h2 class="text-2xl font-semibold text-blue-700 mb-6">Notre Équipe</h2>
-      <div class="grid md:grid-cols-2 gap-8">
-        <div>
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Directeur Général</h3>
-          <p class="text-gray-700">Monsieur X, expert en commerce international depuis plus de 15 ans.</p>
+  <!-- About Introduction -->
+  <section class="about-intro">
+    <div class="container">
+      <div class="intro-content">
+        <div class="intro-text">
+          <h2>Qui Sommes-Nous ?</h2>
+          <p>
+            CIS International Trade est une entreprise spécialisée dans le commerce international, fondée sur les principes de transparence, 
+            de fiabilité et d'excellence. Depuis plus de 18 ans, nous accompagnons nos clients dans leurs projets commerciaux audacieux, 
+            en leur offrant des solutions adaptées et des services haut de gamme.
+          </p>
+          <p>
+            Notre équipe d'experts possède une connaissance approfondie des marchés africains et internationaux, avec un réseau de partenaires 
+            étendu dans plus de 50 pays. Nous nous engageons à faciliter vos opérations commerciales et à vous ouvrir les portes de nouveaux marchés.
+          </p>
         </div>
-        <div>
-          <h3 class="text-xl font-semibold text-gray-800 mb-2">Responsable Logistique</h3>
-          <p class="text-gray-700">Madame Y, spécialiste du transit et de la chaîne d’approvisionnement.</p>
+        <div class="intro-image">
+          <div class="image-placeholder">
+            <i class="fas fa-building"></i>
+          </div>
         </div>
-        <!-- Ajoute plus de membres selon les besoins -->
       </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- Statistics Section -->
+  <section class="stats-section">
+    <div class="container">
+      <h2 class="section-title">Nos Réalisations</h2>
+      <div class="stats-grid">
+        <div *ngFor="let stat of companyStats" class="stat-card">
+          <div class="stat-icon">
+            <i [ngClass]="stat.icon"></i>
+          </div>
+          <div class="stat-value">{{ stat.value }}</div>
+          <div class="stat-label">{{ stat.label }}</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Mission, Vision, Values -->
+  <section class="mission-vision-section">
+    <div class="container">
+      <div class="mvv-grid">
+        <!-- Mission -->
+        <div class="mvv-card mission">
+          <div class="mvv-icon">
+            <i class="fas fa-target"></i>
+          </div>
+          <h3>Notre Mission</h3>
+          <p>
+            Faciliter et accélérer les échanges commerciaux entre l'Afrique et le reste du monde en offrant des services 
+            logistiques et commerciaux de qualité, adaptés aux besoins spécifiques de chaque client et contribuant au 
+            développement économique africain.
+          </p>
+        </div>
+
+        <!-- Vision -->
+        <div class="mvv-card vision">
+          <div class="mvv-icon">
+            <i class="fas fa-eye"></i>
+          </div>
+          <h3>Notre Vision</h3>
+          <p>
+            Être un acteur de référence incontournable en matière d'import-export, de transit et de représentation commerciale. 
+            Nous aspirons à créer un écosystème commercial qui favorise la croissance mutuelle et contribue activement au 
+            développement durable du continent africain.
+          </p>
+        </div>
+
+        <!-- Values -->
+        <div class="mvv-card values">
+          <div class="mvv-icon">
+            <i class="fas fa-heart"></i>
+          </div>
+          <h3>Nos Valeurs</h3>
+          <p>
+            Confiance, Excellence, Innovation, Fiabilité, Partenariat et Développement Durable. Ces valeurs guident chacune 
+            de nos actions et définissent notre engagement envers nos clients, partenaires et la communauté.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Core Values Grid -->
+  <section class="values-grid-section">
+    <div class="container">
+      <h2 class="section-title">Les Valeurs qui Nous Définissent</h2>
+      <div class="values-grid">
+        <div *ngFor="let value of companyValues" class="value-card">
+          <div class="value-icon">
+            <i [ngClass]="value.icon"></i>
+          </div>
+          <h3>{{ value.title }}</h3>
+          <p>{{ value.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section class="team-section">
+    <div class="container">
+      <h2 class="section-title">Notre Équipe d'Experts</h2>
+      <p class="section-subtitle">Des professionnels passionnés et expérimentés au service de votre succès</p>
+      
+      <div class="team-grid">
+        <div *ngFor="let member of teamMembers" class="team-card">
+          <div class="team-member-icon">
+            <i [ngClass]="member.icon"></i>
+          </div>
+          <h3 class="member-name">{{ member.name }}</h3>
+          <p class="member-position">{{ member.position }}</p>
+          <p class="member-description">{{ member.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Choose Us -->
+  <section class="why-choose-us">
+    <div class="container">
+      <h2 class="section-title">Pourquoi Nous Choisir ?</h2>
+      
+      <div class="reasons-grid">
+        <div class="reason-card">
+          <div class="reason-icon">
+            <i class="fas fa-award"></i>
+          </div>
+          <h3>Expertise Éprouvée</h3>
+          <p>18 ans d'expérience et des milliers de projets réussis. Nos experts connaissent les subtilités 
+          du commerce international africain.</p>
+        </div>
+
+        <div class="reason-card">
+          <div class="reason-icon">
+            <i class="fas fa-network-wired"></i>
+          </div>
+          <h3>Réseau Mondial</h3>
+          <p>Partenaires fiables dans 50+ pays. Un réseau solide pour faciliter vos opérations 
+          commerciales internationales.</p>
+        </div>
+
+        <div class="reason-card">
+          <div class="reason-icon">
+            <i class="fas fa-headset"></i>
+          </div>
+          <h3>Support Réactif</h3>
+          <p>Équipe disponible et réactive pour répondre à vos besoins. Support personnalisé 
+          adapté à votre profil client.</p>
+        </div>
+
+        <div class="reason-card">
+          <div class="reason-icon">
+            <i class="fas fa-lock"></i>
+          </div>
+          <h3>Sécurité & Fiabilité</h3>
+          <p>Certifications ISO et normes internationales respectées. Vos opérations sont 
+          entre bonnes mains.</p>
+        </div>
+
+        <div class="reason-card">
+          <div class="reason-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <h3>Solutions Adaptées</h3>
+          <p>Services personnalisés selon vos besoins. Nous trouvons la meilleure solution 
+          pour votre business.</p>
+        </div>
+
+        <div class="reason-card">
+          <div class="reason-icon">
+            <i class="fas fa-handshake"></i>
+          </div>
+          <h3>Partenariat Durable</h3>
+          <p>Nous ne voyons pas nos clients comme des transactions. Nous construisons 
+          des partenariats durables et gagnant-gagnant.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2>Prêt à Partenaire Avec Nous ?</h2>
+      <p>Rejoignez les centaines de clients satisfaits qui font confiance à CIS International Trade</p>
+      <button class="cta-button">Démarrer une Collaboration</button>
+    </div>
+  </section>
+</main>
