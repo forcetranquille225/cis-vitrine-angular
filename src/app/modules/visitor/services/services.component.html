@@ -1,50 +1,106 @@
-<section class="py-20 px-4 bg-white">
-  <div class="max-w-6xl mx-auto">
-    <h1 class="text-4xl font-bold text-center text-gray-800 mb-12">
-      Nos Services
-    </h1>
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-      
-      <!-- Importation -->
-      <div class="bg-gray-50 p-6 rounded-lg shadow hover:shadow-md transition">
-        <h2 class="text-2xl font-semibold text-blue-700 mb-2">Importation</h2>
-        <p class="text-gray-600">
-          Nous vous accompagnons dans l’achat, le transport et le dédouanement de vos marchandises depuis l’étranger, avec une expertise éprouvée.
-        </p>
-      </div>
-      
-      <!-- Exportation -->
-      <div class="bg-gray-50 p-6 rounded-lg shadow hover:shadow-md transition">
-        <h2 class="text-2xl font-semibold text-blue-700 mb-2">Exportation</h2>
-        <p class="text-gray-600">
-          Nous facilitons l’accès à de nouveaux marchés internationaux grâce à un réseau fiable et une connaissance approfondie des procédures d’export.
-        </p>
-      </div>
-      
-      <!-- Transit -->
-      <div class="bg-gray-50 p-6 rounded-lg shadow hover:shadow-md transition">
-        <h2 class="text-2xl font-semibold text-blue-700 mb-2">Transit</h2>
-        <p class="text-gray-600">
-          Optimisez vos délais de livraison avec notre service de transit douanier et notre logistique maîtrisée.
-        </p>
-      </div>
-      
-      <!-- Commerce International -->
-      <div class="bg-gray-50 p-6 rounded-lg shadow hover:shadow-md transition">
-        <h2 class="text-2xl font-semibold text-blue-700 mb-2">Commerce International</h2>
-        <p class="text-gray-600">
-          Nous jouons le rôle d’intermédiaire stratégique entre acheteurs et vendeurs à l’échelle mondiale pour fluidifier vos opérations.
-        </p>
-      </div>
-      
-      <!-- Représentation Commerciale -->
-      <div class="bg-gray-50 p-6 rounded-lg shadow hover:shadow-md transition">
-        <h2 class="text-2xl font-semibold text-blue-700 mb-2">Représentation Commerciale</h2>
-        <p class="text-gray-600">
-          Bénéficiez de notre réseau et de notre ancrage local pour représenter efficacement vos produits et services sur le marché africain.
-        </p>
-      </div>
-
+<main>
+  <!-- Hero Section -->
+  <section class="hero-services">
+    <div class="hero-content">
+      <h1>Nos Services</h1>
+      <p>Solutions complètes en commerce international et logistique</p>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- Services Navigation & Details -->
+  <section class="services-section">
+    <div class="container">
+      <div class="services-layout">
+        <!-- Services Menu (Desktop) -->
+        <aside class="services-menu desktop-menu">
+          <h3 class="menu-title">Services</h3>
+          <ul class="menu-list">
+            <li *ngFor="let service of services" 
+                [class.active]="selectedService?.id === service.id"
+                (click)="selectService(service)"
+                class="menu-item">
+              <i [ngClass]="service.icon"></i>
+              <span>{{ service.title }}</span>
+            </li>
+          </ul>
+        </aside>
+
+        <!-- Services Details -->
+        <div class="services-details">
+          <div *ngIf="selectedService" class="service-detail-card">
+            <!-- Header du service sélectionné -->
+            <div class="service-header">
+              <div class="service-icon-large">
+                <i [ngClass]="selectedService.icon"></i>
+              </div>
+              <div class="service-title-section">
+                <h2>{{ selectedService.title }}</h2>
+                <p class="service-subtitle">{{ selectedService.shortDescription }}</p>
+              </div>
+            </div>
+
+            <!-- Description Complète -->
+            <div class="service-description">
+              <p>{{ selectedService.fullDescription }}</p>
+            </div>
+
+            <!-- Avantages -->
+            <div class="service-benefits">
+              <h3>Avantages</h3>
+              <ul class="benefits-list">
+                <li *ngFor="let benefit of selectedService.benefits">
+                  <i class="fas fa-check-circle"></i>
+                  <span>{{ benefit }}</span>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Processus -->
+            <div class="service-process">
+              <h3>Notre Processus</h3>
+              <ol class="process-list">
+                <li *ngFor="let step of selectedService.process">
+                  <span class="step-number">{{ selectedService.process.indexOf(step) + 1 }}</span>
+                  <span class="step-text">{{ step }}</span>
+                </li>
+              </ol>
+            </div>
+
+            <!-- CTA Button -->
+            <div class="service-cta">
+              <button class="cta-button" [attr.aria-label]="'Demander une consultation pour ' + selectedService.title">
+                Demander une consultation
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Services Menu -->
+    <div class="mobile-menu-container">
+      <button class="mobile-menu-toggle" (click)="toggleMenu()">
+        <span>{{ selectedService?.title }}</span>
+        <i class="fas fa-chevron-down" [class.open]="isMenuOpen"></i>
+      </button>
+      <ul class="mobile-menu" *ngIf="isMenuOpen">
+        <li *ngFor="let service of services" 
+            [class.active]="selectedService?.id === service.id"
+            (click)="selectService(service)">
+          <i [ngClass]="service.icon"></i>
+          <span>{{ service.title }}</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2>Besoin d'un Service Spécifique ?</h2>
+      <p>Nos experts sont prêts à vous accompagner dans vos projets commerciaux internationaux</p>
+      <button class="cta-button" [attr.aria-label]="'Contactez-nous maintenant pour une consultation'">Contactez-nous Maintenant</button>
+    </div>
+  </section>
+</main>
