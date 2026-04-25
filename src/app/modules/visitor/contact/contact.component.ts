@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CONTACT_INFOS, OFFICE_HOURS, FORM_FIELDS, ContactInfo } from './contact.model';
+import { ContactService } from '../../../core/services/contact.service';
 
 @Component({
   selector: 'app-contact',
@@ -16,20 +17,49 @@ export class ContactComponent {
   formFields = FORM_FIELDS;
   submitted = false;
   messageSent = false;
+  errorMessage: string | null = null;
+
+  constructor(private contactService: ContactService) {}
 
   onSubmit(form: NgForm) {
     if (form.valid) {
       this.submitted = true;
-      this.messageSent = true;
-      console.log('Formulaire soumis ✅', form.value);
-      
-      // Reset message after 5 seconds
-      setTimeout(() => {
-        this.messageSent = false;
-        form.reset();
-        this.submitted = false;
-      }, 5000);
+      this.errorMessage = null;
+
+      const contactData = {
+        name: form.value.name,
+        email: form.value.email,
+        phone: form.value.phone || undefined,
+        company: form.value.company || undefined,
+        subject: form.value.subject,
+        message: form.value.message,
+      };
+
+      this.contactService.submitContact(contactData).subscribe({
+        next: (response) => {
+          console.log('Message envoyé avec succès ✅', response);
+          this.messageSent = true;
+          this.submitted = false;
+
+          // Reset form and message after 5 seconds
+          setTimeout(() => {
+            this.messageSent = false;
+            form.reset();
+          }, 5000);
+        },
+        error: (error) => {
+          console.error('Erreur lors de l\'envoi du message ❌', error);
+          this.errorMessage = 'Une erreur est survenue lors de l\'envoi. Veuillez réessayer.';
+          this.submitted = false;
+
+          // Clear error message after 5 seconds
+          setTimeout(() => {
+            this.errorMessage = null;
+          }, 5000);
+        }
+      });
     }
   }
 }
+
 
