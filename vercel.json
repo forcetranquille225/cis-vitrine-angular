@@ -1,0 +1,15 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/cis-vitrine-angular/browser",
+  "framework": "angular",
+  "regions": ["cdg1"],
+  "env": {
+    "NODE_VERSION": "18.17.0"
+  },
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
