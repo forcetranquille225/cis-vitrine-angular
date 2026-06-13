@@ -23,13 +23,13 @@ export const CONTACT_INFOS: ContactInfo[] = [
   {
     icon: 'fas fa-phone-alt',
     title: 'Téléphone',
-    content: '+225 07 48 XX XX XX',
+    content: '+225 07 02 71 6329',
     details: 'Disponible du lundi au vendredi'
   },
   {
     icon: 'fas fa-envelope',
     title: 'Email',
-    content: 'contact@cis-international.ci',
+    content: 'commerce.interservices@gmail.com',
     details: 'Réponse dans les 24h'
   },
   {

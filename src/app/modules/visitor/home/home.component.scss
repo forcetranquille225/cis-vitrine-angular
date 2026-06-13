@@ -16,7 +16,15 @@ main {
 
 // Hero Section
 .hero {
-  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  /* Fusion du dégradé bleu existant avec l'image des assets */
+  background: linear-gradient(135deg, rgba(30, 60, 114, 0.8) 0%, rgba(42, 82, 152, 0.8) 100%), 
+              url('../../../../assets/images/home_background.png');
+  
+  /* Ajustements pour que l'image soit parfaite */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
   min-height: 80vh;
   display: flex;
   align-items: center;
@@ -42,6 +50,7 @@ main {
     }
   }
 }
+
 
 // Services Overview
 .services-overview {
