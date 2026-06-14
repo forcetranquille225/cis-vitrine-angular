@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ApiService } from './api.service';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 export interface ContactData {
@@ -12,29 +12,18 @@ export interface ContactData {
 }
 
 export interface ContactResponse {
-  id: string;
-  name: string;
-  email: string;
-  phone?: string;
-  company?: string;
-  subject: string;
+  success: boolean;
   message: string;
-  createdAt: Date;
+  error?: string;
 }
 
 @Injectable({ providedIn: 'root' })
 export class ContactService {
-  constructor(private apiService: ApiService) {}
+  private apiUrl = '/api/contact'; // Vercel serverless function
+
+  constructor(private http: HttpClient) {}
 
   submitContact(contactData: ContactData): Observable<ContactResponse> {
-    return this.apiService.post<ContactResponse>('contact', contactData);
-  }
-
-  getContacts(): Observable<ContactResponse[]> {
-    return this.apiService.get<ContactResponse[]>('contact');
-  }
-
-  getContactById(id: string): Observable<ContactResponse> {
-    return this.apiService.get<ContactResponse>(`contact/${id}`);
+    return this.http.post<ContactResponse>(this.apiUrl, contactData);
   }
 }

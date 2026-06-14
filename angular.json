@@ -71,7 +71,8 @@
               "buildTarget": "cis-vitrine-angular:build:production"
             },
             "development": {
-              "buildTarget": "cis-vitrine-angular:build:development"
+              "buildTarget": "cis-vitrine-angular:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

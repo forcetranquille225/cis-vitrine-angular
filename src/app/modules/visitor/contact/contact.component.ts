@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgForm } from '@angular/forms';
 import { CONTACT_INFOS, OFFICE_HOURS, FORM_FIELDS, ContactInfo } from './contact.model';
@@ -11,7 +11,7 @@ import { ContactService } from '../../../core/services/contact.service';
   styleUrl: './contact.component.scss',
   imports: [CommonModule, FormsModule]
 })
-export class ContactComponent {
+export class ContactComponent implements OnInit {
   contactInfos: ContactInfo[] = CONTACT_INFOS;
   officeHours = OFFICE_HOURS;
   formFields = FORM_FIELDS;
@@ -20,6 +20,10 @@ export class ContactComponent {
   errorMessage: string | null = null;
 
   constructor(private contactService: ContactService) {}
+
+  ngOnInit() {
+    // Initialize component
+  }
 
   onSubmit(form: NgForm) {
     if (form.valid) {
@@ -32,7 +36,7 @@ export class ContactComponent {
         phone: form.value.phone || undefined,
         company: form.value.company || undefined,
         subject: form.value.subject,
-        message: form.value.message,
+        message: form.value.message
       };
 
       this.contactService.submitContact(contactData).subscribe({
@@ -49,7 +53,7 @@ export class ContactComponent {
         },
         error: (error) => {
           console.error('Erreur lors de l\'envoi du message ❌', error);
-          this.errorMessage = 'Une erreur est survenue lors de l\'envoi. Veuillez réessayer.';
+          this.errorMessage = error.error?.error || 'Une erreur est survenue lors de l\'envoi. Veuillez réessayer.';
           this.submitted = false;
 
           // Clear error message after 5 seconds
