@@ -17,7 +17,7 @@ export const CONTACT_INFOS: ContactInfo[] = [
   {
     icon: 'fas fa-map-marker-alt',
     title: 'Adresse',
-    content: 'Deux Plateaux, Abidjan',
+    content: 'Plateaux Dokui, Abidjan',
     details: 'Côte d\'Ivoire'
   },
   {
