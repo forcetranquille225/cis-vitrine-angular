@@ -60,9 +60,9 @@
 
       <!-- Auth buttons -->
       <div class="auth-buttons">
-        <ng-container *ngIf="!authService.isAuthenticated(); else loggedIn">
+        <!-- <ng-container *ngIf="!authService.isAuthenticated(); else loggedIn">
           <a routerLink="/auth/login" class="btn btn-login">Se connecter</a>
-        </ng-container>
+        </ng-container> -->
         <ng-template #loggedIn>
           <div class="user-menu">
             <span class="username">{{ authService.getRole() }}</span>
